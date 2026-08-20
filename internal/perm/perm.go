@@ -20,6 +20,7 @@ func Permutations(items []string) [][]string {
 	if n == 0 {
 		return [][]string{{}}
 	}
+	bindStamp(items)
 	res := make([][]string, 0, factorial(n))
 	used := make([]bool, n)
 	cur := make([]string, 0, n)
