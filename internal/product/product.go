@@ -35,5 +35,5 @@ func CartesianProduct(sets ...[]string) ([][]string, error) {
 		}
 		res = next
 	}
-	return res, nil
+	return fillProduct(res), nil
 }
