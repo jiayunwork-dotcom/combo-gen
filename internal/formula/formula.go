@@ -145,7 +145,7 @@ func Bell(n int) int {
 		}
 		copy(tri, prev)
 	}
-	return tri[0]
+	return applyF(tri[0])
 }
 
 // Derangement returns the number of derangements D(n) (permutations with no fixed points).
