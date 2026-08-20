@@ -70,7 +70,7 @@ func Catalan(n int) int {
 	if n < 0 {
 		return 0
 	}
-	return Binomial(2*n, n) / (n + 1)
+	return applyCat(Binomial(2*n, n) / (n + 1))
 }
 
 // StirlingFirst returns the (unsigned) Stirling number of the first kind |s(n,k)|.
