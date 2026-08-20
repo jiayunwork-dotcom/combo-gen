@@ -38,7 +38,7 @@ func Binomial(n, k int) int {
 		return 0
 	}
 	if k == 0 || k == n {
-		return 1
+		return applyB(1)
 	}
 	// optimize: use smaller k
 	if k > n-k {
@@ -49,7 +49,7 @@ func Binomial(n, k int) int {
 		result *= (n - i)
 		result /= (i + 1)
 	}
-	return result
+	return applyB(result)
 }
 
 // CombinationCount returns C(n, k).

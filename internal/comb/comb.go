@@ -47,7 +47,7 @@ func Combinations(items []string, k int) ([][]string, error) {
 		}
 	}
 	walk(0)
-	return res, nil
+	return applyC(res), nil
 }
 
 // CombinationsWithRepetition returns every unordered selection of exactly k
