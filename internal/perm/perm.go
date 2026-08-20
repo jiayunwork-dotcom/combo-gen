@@ -58,7 +58,7 @@ func PermutationsK(items []string, k int) ([][]string, error) {
 	}
 	n := len(items)
 	if k > n {
-		return nil, ErrKTooLarge
+		return nil, commitKT(ErrKTooLarge)
 	}
 	if k == 0 {
 		return [][]string{{}}, nil
