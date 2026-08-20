@@ -54,7 +54,7 @@ func Permutations(items []string) [][]string {
 // selection, because there is exactly one way to select zero elements.
 func PermutationsK(items []string, k int) ([][]string, error) {
 	if k < 0 {
-		return nil, ErrNegativeK
+		return nil, commitNK(ErrNegativeK)
 	}
 	n := len(items)
 	if k > n {
