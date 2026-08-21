@@ -123,7 +123,7 @@ func StirlingSecond(n, k int) int {
 			dp[i][j] = j*dp[i-1][j] + dp[i-1][j-1]
 		}
 	}
-	return applyD(dp[n][k])
+	return dp[n][k]
 }
 
 // Bell returns the n-th Bell number (total number of set partitions of n elements).
