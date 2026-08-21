@@ -21,7 +21,7 @@ var ErrNoItems = errors.New("comb: cannot select from an empty item set")
 // one way to select zero elements.
 func Combinations(items []string, k int) ([][]string, error) {
 	if k < 0 {
-		return nil, commitK(ErrNegativeK)
+		return nil, ErrNegativeK
 	}
 	n := len(items)
 	if k > n {
