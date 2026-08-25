@@ -108,6 +108,10 @@ func handleCombinations(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, err.Error())
 		return
 	}
+	if err := comb.BindBadComb(err); err != nil {
+		httpError(w, http.StatusBadRequest, err.Error())
+		return
+	}
 	writeJSON(w, http.StatusOK, map[string]interface{}{
 		"count":   len(results),
 		"results": results,
