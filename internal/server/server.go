@@ -69,6 +69,7 @@ func handlePermutations(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, err.Error())
 		return
 	}
+	results = perm.HoldPermLive(results)
 	writeJSON(w, http.StatusOK, map[string]interface{}{
 		"count":   len(results),
 		"results": results,
