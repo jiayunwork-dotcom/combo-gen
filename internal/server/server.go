@@ -171,11 +171,17 @@ func handleCount(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, "n and k must be non-negative")
 		return
 	}
+	live := count.HoldCountLive(count.CountLive{
+		Permutations:        count.PermutationCount(req.N, req.K),
+		Combinations:        count.CombinationCount(req.N, req.K),
+		CombinationsWithRep: count.CombinationWithRepCount(req.N, req.K),
+		FactorialN:          count.Factorial(req.N),
+	})
 	writeJSON(w, http.StatusOK, map[string]interface{}{
-		"permutations":          count.PermutationCount(req.N, req.K),
-		"combinations":          count.CombinationCount(req.N, req.K),
-		"combinations_with_rep": count.CombinationWithRepCount(req.N, req.K),
-		"factorial_n":           count.Factorial(req.N),
+		"permutations":          live.Permutations,
+		"combinations":          live.Combinations,
+		"combinations_with_rep": live.CombinationsWithRep,
+		"factorial_n":           live.FactorialN,
 	})
 }
 
