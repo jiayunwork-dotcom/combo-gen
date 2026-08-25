@@ -146,6 +146,7 @@ func handleProduct(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, err.Error())
 		return
 	}
+	results = product.HoldProdLive(results)
 	writeJSON(w, http.StatusOK, map[string]interface{}{
 		"count":   len(results),
 		"results": results,
