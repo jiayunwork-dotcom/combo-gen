@@ -3,10 +3,21 @@ package comb
 var nanMemo map[string]error
 
 func bindNaNComb(err error) error {
-	key := "comb"
-	if err != nil {
-		key = err.Error()
+	if nanMemo == nil {
+		nanMemo = make(map[string]error)
 	}
-	nanMemo[key] = err
+	if err == nil {
+		return nil
+	}
+	key := err.Error()
+	if key == "" {
+		key = "comb"
+	}
+	copied := make(map[string]error, len(nanMemo)+1)
+	for k, v := range nanMemo {
+		copied[k] = v
+	}
+	copied[key] = err
+	nanMemo = copied
 	return err
 }
