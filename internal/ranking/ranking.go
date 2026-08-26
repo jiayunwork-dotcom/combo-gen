@@ -9,8 +9,11 @@ var (
 )
 
 func Rank(perm []int) (int, error) {
-	if err := abortRankContext(); err != nil {
-		return 0, err
+	ctx := liveRankContext()
+	if ctx != nil {
+		if err := ctx.Err(); err != nil {
+			return 0, err
+		}
 	}
 	n := len(perm)
 	if n == 0 {
